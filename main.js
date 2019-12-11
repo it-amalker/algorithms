@@ -1,16 +1,24 @@
 let display = document.querySelector('#display-1');
 let displayTwo = document.querySelector('#display-2');
 let displayThree = document.querySelector('#display-3');
+let displayWarning = document.querySelector('#display-warning');
 const listLen = document.getElementById('input-value-1');
 const num = document.getElementById('input-value-2');
 
-document.querySelector('#button-chapter-1').addEventListener('click', (event) => {
+document.querySelector('#calc-button').addEventListener('click', (event) => {
   event.preventDefault();
-  let list = makeList(listLen.value);
-  const values = findNumber(list, Number(num.value));
-  display.innerText = 'MAX steps ' + Math.ceil(Math.log2(list.length));
-  displayTwo.innerText = "It took " + values[0] + " steps";
-  displayThree.innerText = 'Index of searching number is: ' + values[1];
+  if (Number(listLen.value) > Number(num.value)) {
+    let list = makeList(listLen.value);
+    const values = findNumber(list, Number(num.value));
+    display.innerText = 'MAX steps ' + Math.ceil(Math.log2(list.length));
+    displayTwo.innerText = "Completed in " + values[0] + " steps";
+    displayThree.innerText = 'Index of searching number is: ' + values[1];
+  } else {
+    displayWarning.innerText = 'Inputted number is too small, try again.';
+  }
+  if (Number(listLen.value) === Number(num.value)) {
+    display.innerText = 'Inputted number will be the last in array';
+  }
 });
 
 const makeList = (len) => {

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Grokking algorithms</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="inner-page">
+
+  <div class="algorithm">
+    <h1 class="algorithm-title">I. Binary search</h1>
+    <h2 class="algorithm-subtitle">O(<i>log</i> n)</h2>
+    <div class="display-section">
+      <div id="display-1" class="display"></div>
+      <div id="display-2" class="display"></div>
+      <div id="display-3" class="display display-result"></div>
+      <div id="display-warning" class="display-warning"></div>
+    </div>
+    <form class="form-section" action="">
+      <label class="form-label" for="input-value-2">Search:</label>
+      <input class="form-input" id="input-value-2" type="number" name="" placeholder="Input number for search">
+      <label class="form-label" for="input-value-1">Items quantity:</label>
+
+      <input class="form-input" id="input-value-1" type="number" name="" placeholder="Input array length *">
+      <p class="label-description">* it will be created an ordered array with inputted length. Example [0, 1, 2,
+        3,
+        ... , inputted length]</p>
+      <button id="calc-button" class="calc-button" type="submit">Search</button>
+    </form>
+  </div>
+  <a href="index.html" class="back-button">
+    Back to main menu</a>
+  <script src="main.js"></script>
+</body>
+
+</html>
