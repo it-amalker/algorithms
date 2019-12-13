@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Grokking algorithms</title>
+  <title>Algorithms</title>
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700|Roboto+Slab:400,700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
@@ -21,20 +21,25 @@
       <div id="display-warning" class="display-warning"></div>
     </div>
     <form class="form-section" action="">
-      <label class="form-label" for="input-value-2">Search:</label>
-      <input class="form-input" id="input-value-2" type="number" name="" placeholder="Input number for search">
       <label class="form-label" for="input-value-1">Items quantity:</label>
-
       <input class="form-input" id="input-value-1" type="number" name="" placeholder="Input array length *">
-      <p class="label-description">* it will be created an ordered array with inputted length. Example [0, 1, 2,
-        3,
-        ... , inputted length]</p>
+      <p class="label-description label-description-pos">* generate random arrow. Example [0, 52, 32,
+        7,
+        ... , n]</p>
+      <button id="random-gen-button" class="calc-button random-button" type="submit">Generate</button>
+      <label class="form-label" for="input-value-2">Search:</label>
+      <input class="form-input" id="input-value-2" type="number" name="" placeholder="Input search number">
       <button id="calc-button" class="calc-button" type="submit">Search</button>
+
+
+
     </form>
   </div>
-  <a href="index.html" class="back-button">
-    Back to main menu</a>
-  <script src="js/binary-search.js"></script>
+  <a href="index.html" class="back-button">Back to main menu</a>
+  <div id="screen" class="screen">OUTPUT SCREEN</div>
+  <script src="js/binary-search.js" type="module"></script>
+  <script src="js/elements.js" type="module"></script>
+  <script src="js/makeRandomArray.js" type="module"></script>
 </body>
 
 </html>

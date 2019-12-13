@@ -1,34 +1,47 @@
-let display = document.querySelector('#display-1');
-let displayTwo = document.querySelector('#display-2');
-let displayThree = document.querySelector('#display-3');
-let displayWarning = document.querySelector('#display-warning');
-const listLen = document.getElementById('input-value-1');
-const num = document.getElementById('input-value-2');
+import * as elem from './elements.js';
+import { inputValue1 as arrLength, inputValue2 as searchNum } from './elements.js';
+import random from './makeRandomArray.js';
+import sortArrow from './sorting-by-choice.js';
 
-document.querySelector('#calc-button').addEventListener('click', (event) => {
+
+let sortedArr = [];
+
+elem.randomButton.addEventListener('click', (event) => {
   event.preventDefault();
-  if (Number(listLen.value) > Number(num.value)) {
-    let list = makeList(listLen.value);
-    const values = findNumber(list, Number(num.value));
-    display.innerText = 'MAX steps ' + Math.ceil(Math.log2(list.length));
-    displayTwo.innerText = "Completed in " + values[0] + " steps";
-    displayThree.innerText = 'Index of searching number is: ' + values[1];
+  elem.displayReset();
+  sortedArr = sortArrow(random(arrLength.value, arrLength.value * 3));
+
+  if (+arrLength.value > 0) {
+    elem.toDisplay(sortedArr, 'scr');
+    elem.toDisplay('Choose any number from array below, input this number and click search button', 2);
+    elem.toDisplay('Array generated successfully', 3);
   } else {
-    displayWarning.innerText = 'Inputted number is too small, try again.';
-  }
-  if (Number(listLen.value) === Number(num.value)) {
-    display.innerText = 'Inputted number will be the last in array';
+    elem.toDisplay('Array length must be min 1', 'w');
   }
 });
 
-const makeList = (len) => {
-  let array = [];
-  for (let i = 0; i < len; i++) {
-    array.push(i);
+elem.calcButton.addEventListener('click', (event) => {
+  event.preventDefault();
+  elem.displayReset();
+
+  if (!(elem.isNumInArray(sortedArr, +searchNum.value))) {
+    return elem.toDisplay('No such number in array', 'w');
   }
-  console.log('Array with length of ' + array.length + ' elements is completed');
-  return array;
-};
+
+  if (+searchNum.value > 0) {
+    const result = findNumber(sortedArr, +searchNum.value);
+    const info = 'MAX steps ' + Math.ceil(Math.log2(sortedArr.length));
+    const info2 = "Completed in " + result[0] + " steps";
+    const info3 = "Index of searching number is: " + result[1];
+
+    elem.toDisplay(sortedArr, 'scr');
+    elem.toDisplay(info, 1);
+    elem.toDisplay(info2, 2);
+    elem.toDisplay(info3, 3);
+  } else {
+    elem.toDisplay('Search number must be positive', 'w');
+  }
+});
 
 const findNumber = (list, item) => {
   let lowIndex = 0;
@@ -36,7 +49,7 @@ const findNumber = (list, item) => {
   let midIndex = 0;
   let guess = 0;
   let steps = 1;
-
+  console.log()
 
   while (lowIndex <= highIndex) {
     midIndex = Math.floor((lowIndex + highIndex) / 2);
@@ -54,7 +67,3 @@ const findNumber = (list, item) => {
   }
   return 'None';
 };
-
-// const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; //test
-
-

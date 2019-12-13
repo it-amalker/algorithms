@@ -1,3 +1,4 @@
+import { inputValue1 as arrLength, inputValue2 as maxInt } from './elements.js';
 import * as elem from './elements.js';
 import random from './makeRandomArray.js';
 
@@ -5,16 +6,16 @@ elem.calcButton.addEventListener('click', (event) => {
   event.preventDefault();
   elem.displayReset();
 
-  if (+elem.maxInt.value < 1) {
-    elem.toDisplay('Min number is 1', 'w');
+  if (+maxInt.value < 1) {
+    elem.toDisplay('MAX array number must be greater than 1', 'w');
     return;
   }
-  if (+elem.arrLength.value > 1) {
-    const array = random(elem.arrLength.value, elem.maxInt.value);
-    const values = selectionSort(array);
-    const sortInfo = "Array start: [" + values[0] + "], [" + values[1] + "], [" + values[2] + "] ... ";
-    const sortInfo2 = "Array end: [" + values[values.length - 3] + "], [" + values[values.length - 2] + "], [" + values[values.length - 1] + "]";
-    elem.toDisplay(values, 'scr');
+  if (+arrLength.value > 1) {
+    const arr = random(arrLength.value, maxInt.value);
+    const sortedArr = selectionSort(arr);
+    const sortInfo = "Array start: [" + sortedArr[0] + "], [" + sortedArr[1] + "], [" + sortedArr[2] + "] ... ";
+    const sortInfo2 = "Array end: [" + sortedArr[sortedArr.length - 3] + "], [" + sortedArr[sortedArr.length - 2] + "], [" + sortedArr[sortedArr.length - 1] + "]";
+    elem.toDisplay(sortedArr, 'scr');
     elem.toDisplay(sortInfo, 1);
     elem.toDisplay(sortInfo2, 2);
     elem.toDisplay('Sorting complete', 3);
@@ -44,5 +45,4 @@ const selectionSort = (arr) => {
   return newArr;
 }
 
-
-
+export default selectionSort;

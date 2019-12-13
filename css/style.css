@@ -89,6 +89,10 @@ body {
   border-bottom: 3px solid #7285b9;
 }
 
+.form-input:focus {
+  background-color: #fff;
+} 
+
 .form-input::placeholder {
   color: #c3c9da;
   font-size: 16px;
@@ -105,6 +109,10 @@ body {
   font-size: 14px;
   color: #c3c9da;
   font-style: italic;
+}
+
+.label-description-pos {
+  margin-bottom: 10px;
 }
 
 .display {
@@ -169,6 +177,10 @@ body {
 
 .back-button:active {
   color: #012fad;
+}
+
+.random-button {
+  margin-bottom: 15px;
 }
 
 .screen {
