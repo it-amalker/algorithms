@@ -1,14 +1,14 @@
-const makeList = (len, max) => {
-  let array = [];
-  for (let i = 0; i < len; i++) {
-    array.push(getRandomInt(max));
+export default (arrayLength, maxRandomNum) => {
+  const getRandomNumber = (max) => {
+    const min = 0;
+
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
-  return array;
+
+  const numbers = [];
+  for (let i = 0; i < arrayLength; i++) {
+    numbers.push(getRandomNumber(maxRandomNum));
+  }
+
+  return numbers;
 };
-
-const getRandomInt = (max) => {
-  const min = 0;
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-export default makeList;
