@@ -1,15 +1,15 @@
 import * as elem from './elements.js';
 import { inputValue1 as arrLength, inputValue2 as searchNum } from './elements.js';
 import random from './makeRandomArray.js';
-import sortArrow from './sorting-by-choice.js';
-
+import quickSort from './quick-sort.js';
 
 let sortedArr = [];
 
 elem.randomButton.addEventListener('click', (event) => {
   event.preventDefault();
   elem.displayReset();
-  sortedArr = sortArrow(random(arrLength.value, arrLength.value * 3));
+
+  sortedArr = quickSort(random(arrLength.value, arrLength.value * 3));
 
   if (+arrLength.value > 0) {
     elem.toDisplay(sortedArr, 'scr');
@@ -29,10 +29,10 @@ elem.calcButton.addEventListener('click', (event) => {
   }
 
   if (+searchNum.value > 0) {
-    const result = findNumber(sortedArr, +searchNum.value);
-    const info = 'MAX steps ' + Math.ceil(Math.log2(sortedArr.length));
-    const info2 = "Completed in " + result[0] + " steps";
-    const info3 = "Index of searching number is: " + result[1];
+    const [steps, searchingIndex] = findNumber(sortedArr, +searchNum.value);
+    const info = `MAX steps ${Math.ceil(Math.log2(sortedArr.length))}`;
+    const info2 = `Completed in ${steps} steps`;
+    const info3 = `Index of searching number is: ${searchingIndex}`;
 
     elem.toDisplay(sortedArr, 'scr');
     elem.toDisplay(info, 1);
